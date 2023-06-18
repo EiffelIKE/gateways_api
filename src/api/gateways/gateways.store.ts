@@ -30,9 +30,6 @@ export const saveGateway = async (gateway: Gateway) => {
 };
 
 export const updateById = async (gateway: Gateway, id: string) => {
-  if (gateway.devices?.length > 10) {
-    throw new Error('Only 10 devices per Gateway');
-  }
   const updatedGateway = await Gateways.findOneAndUpdate({ 
     _id: new ObjectId(id),
   }, {
