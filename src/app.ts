@@ -5,7 +5,9 @@ import cors from 'cors';
 
 import * as middlewares from './middlewares';
 import api from './api';
-import MessageResponse from './interfaces/MessageResponse';
+import { MessageResponse } from './interfaces';
+
+import { connectToDatabase } from './db';
 
 require('dotenv').config();
 
@@ -15,6 +17,8 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+connectToDatabase();
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({

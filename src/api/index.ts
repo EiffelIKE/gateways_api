@@ -1,7 +1,7 @@
 import express from 'express';
 
-import MessageResponse from '../interfaces/MessageResponse';
-import numbers from './numbers';
+import { MessageResponse } from '../interfaces';
+import gateways from './gateways/gateways.routes';
 
 const router = express.Router();
 
@@ -11,6 +11,6 @@ router.get<{}, MessageResponse>('/', (req, res) => {
   });
 });
 
-router.use('/numbers', numbers);
+router.use('/gateways', gateways);
 
 export default router;

@@ -1,3 +1,4 @@
-export default interface MessageResponse {
-  message: string;
+import { ZodIssue } from 'zod';
+export interface MessageResponse {
+  message: string | ZodIssue[];
 }
