@@ -9,7 +9,7 @@ export const db = client.db();
 export const connectToDatabase = async (): Promise<void> => {
   try {
     await client.connect();
-    //console.log('[db]: Connected to the database');
+    console.log('[db]: Connected to the database');
   } catch (error) {
     console.error('[db]:Error connecting to the database:', error);
   }
