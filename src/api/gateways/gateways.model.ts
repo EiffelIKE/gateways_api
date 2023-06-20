@@ -1,11 +1,12 @@
 import { WithId } from 'mongodb';
 import * as z from 'zod';
 import { ipv4Validator } from '../../validators';
+import { dateValidator } from '../../validators/dateValidator';
 
 export const Device = z.object({
   uid: z.number().min(1),
   vendor: z.string().min(1),
-  created_at: z.date().default(new Date()).optional(),
+  created_at: z.string().default(new Date().toISOString()).optional().refine(value => dateValidator(value)),
   status: z.string().refine((value) => {
     return value === 'offline' || value === 'online';
   }, '[validation]: Invalid status value'),

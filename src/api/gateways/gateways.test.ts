@@ -68,7 +68,8 @@ describe(`POST ${path}`, () => {
         expect(body).toHaveProperty('ipv4', ipv4);
         expect(body).toHaveProperty('serialNumber', serialNumber);
         expect(body).toHaveProperty('_id');
-        expect(body).toHaveProperty('devices', mockDevices);
+        expect(body).toHaveProperty('devices');
+        expect(body.devices).toHaveLength(5);
         gatewayId = body._id;
       }),
   );

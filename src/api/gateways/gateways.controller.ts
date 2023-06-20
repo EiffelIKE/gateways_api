@@ -29,7 +29,7 @@ export const getOne = async (req: Request<ParamsWithId, GatewayWithId, {}>, res:
 export const createOne = async (req: Request<{}, GatewayWithId, Gateway>, res: Response<GatewayWithId>, next: NextFunction) => {
   const { body } = req;
   if (body.devices.length > 0) {
-    body.devices = body.devices.map(device => ({ ...device, created_at: new Date() }));
+    body.devices = body.devices.map(device => ({ ...device, created_at: new Date().toISOString() }));
   }
   try {
     const id = await saveGateway(body);
